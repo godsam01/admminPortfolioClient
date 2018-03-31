@@ -122,22 +122,24 @@
 									id="dataTables-example">
 									<thead>
 										<tr>
-											<th>Rendering engine</th>
-											<th>Browser</th>
-											<th>Platform(s)</th>
-											<th>Engine version</th>
-											<th>CSS grade</th>
+											<th class="center">Lists information</th>	
+											<th></th>
+											<th></th>
+											<th class="center">Edit</th>
+											<th class="center">Delete</th>																			
 										</tr>
 									</thead>
+								<c:forEach items="${adminListinformation}" var="adminListinformation">
 									<tbody>									
 										<tr class="even gradeC">
-											<td>Trident</td>
-											<td>Internet Explorer 5.0</td>
-											<td>Win 95+</td>
-											<td class="center">5</td>
-											<td class="center">C</td>
+											<td>${adminListinformation.body}</td>
+											<td></td>
+											<td></td>
+											<td class="center"><button type="button" class="btn btn-warning">Edit</button></td>
+											<td class="center"><button type="button" class="btn btn-danger">Delete</button></td>																				
 										</tr>									
 									</tbody>
+								</c:forEach>
 								</table>
 							</div>
 						</div>

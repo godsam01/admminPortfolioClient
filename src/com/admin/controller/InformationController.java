@@ -45,13 +45,13 @@ public class InformationController {
 		 
 	 }
 	 
-	 @RequestMapping("/listInformation")
+	 @RequestMapping("/adminListinformation")
 	 public ModelAndView listInformation(HttpServletRequest request){
-		 ModelAndView mv = new ModelAndView("listInformation.jsp");
+		 ModelAndView mv = new ModelAndView("adminListinformation.jsp");
 		 List<information> listinformation;
 		 try{
 			 listinformation = informationSer.getAllInformation();
-			 mv.addObject("listInformation",listinformation);
+			 mv.addObject("adminListinformation",listinformation);
 		 }catch (Exception e) {
 			// TODO: handle exception
 		}

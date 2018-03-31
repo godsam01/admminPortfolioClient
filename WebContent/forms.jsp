@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin</title>
 <!-- Core CSS - Include with every page -->
+<link rel="icon" href="favicon.ico">
 <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link href="assets/plugins/pace/pace-theme-big-counter.css"
 	rel="stylesheet" />
 <link href="assets/css/style.css" rel="stylesheet" />
 <link href="assets/css/main-style.css" rel="stylesheet" />
-<link rel="icon" href="favicon.ico">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
@@ -72,7 +72,7 @@
 						success : function(result) {
 							console.log('result', result);
 							if (result === 'success') {
-								window.location = "http://localhost:8080/Adminportfolio/listInformation.do";
+								window.location = "http://localhost:8080/Adminportfolio/adminListinformation.do";
 							}
 						},
 						error : function(xhr, status, error) {
@@ -173,26 +173,19 @@
 			</div>
 			<!-- Addinformation -->
 
-			<form>
-				<textarea id="froala-editor">
-			<c:forEach items="${listInformation}" var="listInformation">
-				${listInformation.body}
-			</c:forEach>
-		</textarea>
+			<form>			
 				<textarea id="froala-editor">
 		
 				</textarea>
 				<input type="button" value="Next" onclick="onClickSave()">
 			</form>
 			<br />
-			<div id="preview" class="fr-view">
-				<p>
-					<c:forEach items="${listInformation}" var="listInformation">
-					${listInformation.body}
-				</c:forEach>
-				</p>
-
-			</div>
+			<script>
+				$('textarea#froala-editor').froalaEditor().on(
+						'froalaEditor.contentChanged', function(e, editor) {
+							$('#preview').html(editor.html.get());
+						})
+			</script>
 			<script>
 				$('textarea#froala-editor').froalaEditor(
 						{
