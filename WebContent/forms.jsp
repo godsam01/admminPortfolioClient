@@ -23,11 +23,33 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.6/css/froala_style.min.css"
 	rel="stylesheet" type="text/css" />
-	<link rel="icon" href="favicon.ico">
+<link rel="icon" href="favicon.ico">
+<meta name="google-signin-client_id"
+	content="322812928410-ru9dr6in3oa9gcqbu6tefptb61fd1pt9.apps.googleusercontent.com">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async
+	defer></script>
+<script>
+	function signOut() {
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function() {
+			console.log('User signed out.');
+		});
+	}
 
+	function onLoad() {
+		gapi.load('auth2', function() {
+			gapi.auth2.init();
+		});
+	}
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async
+	defer></script>
 </head>
 <body>
-<script type="text/javascript"
+	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
@@ -37,19 +59,20 @@
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.6/js/froala_editor.pkgd.min.js"></script>
 	<!--  wrapper -->
-<script>
+	<script>
 	function onClickSave() {
-		var text = $('textarea#froala-editor').val();
-		console.log('Save',text);
+		var htmlValue = $('textarea#froala-editor').val();
+		console.log('Save ',htmlValue);
 		$.ajax({
 			url : "saveInformation.do",
 			data : {
-				text : text
+				htmlValue : htmlValue
 			},
 			success : function(result) {
 				console.log('result', result);
 				if (result === 'success') {
-					window.location = "http://localhost:8080/Adminportfolio/listInformation.jsp";}
+					window.location = "http://localhost:8080/Adminportfolio/listInformation.do";
+					}
 			},
 			error : function(xhr, status, error) {
 				console.log('worng')
@@ -57,7 +80,7 @@
 			}
 		});
 	}
-</script>
+	</script>
 	<div id="wrapper">
 		<!-- navbar top -->
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation"
@@ -79,12 +102,11 @@
 					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-3x"></i>
 				</a> <!-- dropdown user-->
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i>User
-								Profile</a></li>
-						<li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
-						</li>
+						<li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a></li>
+						<li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+						<li><a href="login.jsp" onclick="signOut();"><i class="fa fa-sign-out fa-fw"></i>Sign off</a>
+						
 						</li>
 					</ul> <!-- end dropdown-user --></li>
 				<!-- end main dropdown -->
@@ -108,7 +130,7 @@
 							</div>
 							<div class="user-info">
 								<div>
-									Witthaya <strong>Sam</strong>
+									Admin <strong></strong>
 								</div>
 								<div class="user-text-online">
 									<span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
@@ -127,18 +149,17 @@
 							</span>
 						</div> <!--end search section-->
 					</li>
-					<li><a href="timeline.html"><i class="fa fa-flask fa-fw"></i>Timeline</a>
-					</li>
-					<li class="selected"><a href="forms.html"><i
-							class="fa fa-edit fa-fw"></i>Forms</a></li>
-					<li><a href="login.html"><i class="fa fa-files-o fa-fw"></i>Login
-							Page</a> <!-- second-level-items --></li>
+					<li><a href="timeline.jsp"><i class="fa fa-flask fa-fw"></i>Timeline</a></li>
+					<li class="selected"><a href="forms.jsp"><i class="fa fa-edit fa-fw"></i>Forms</a></li>
+					<li><a href="listInformation.do"><i class="fa fa-files-o fa-fw"></i> List News</a>
+					 <!-- second-level-items --></li>
 				</ul>
 				<!-- end side-menu -->
 			</div>
 			<!-- end sidebar-collapse -->
 		</nav>
 		<!-- end navbar side -->
+		
 		<!--  page-wrapper -->
 		<div id="page-wrapper">
 			<div class="row">
@@ -149,24 +170,25 @@
 				<!--end page header -->
 			</div>
 			<!-- Addinformation -->
-			
-		<form>	
-		<textarea  id="froala-editor">
-			<c:forEach items="${newInformation}" var="listinformation">
-				${newInformation.text}
-			</c:forEach>
-		</textarea>
-		<input type='submit' value="newInformation" onclick="onClickSave()">
-		</form>
-	<br />
-	<script>
-		$('textarea#froala-editor').froalaEditor().on('froalaEditor.contentChanged',
-				function(e, editor) {
-					$('#preview').html(editor.html.get());
-				})
-	</script>
-		<!-- Addinformation -->	
+
+			<form>
+				<textarea id="froala-editor">
 		
+				</textarea>
+				<input type="button" value="Next" onclick="onClickSave()">
+			</form>
+			<br />
+			<script>
+			$('textarea#froala-editor').froalaEditor({
+				  toolbarInline: true,
+				  charCounterCount: false,
+				  toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage', 'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo'],
+				  toolbarVisibleWithoutSelection: true
+				})
+			
+			</script>
+			<!-- Addinformation -->
+
 		</div>
 		<!-- end page-wrapper -->
 

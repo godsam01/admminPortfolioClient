@@ -14,101 +14,159 @@
      <!-- Page Level CSS -->
     <link href="assets/plugins/timeline/timeline.css" rel="stylesheet" />
 <link rel="icon" href="favicon.ico">
+<meta name="google-signin-client_id"
+	content="322812928410-ru9dr6in3oa9gcqbu6tefptb61fd1pt9.apps.googleusercontent.com">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async
+	defer></script>
+<script>
+	function signOut() {
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function() {
+			console.log('User signed out.');
+		});
+	}
+
+	function onLoad() {
+		gapi.load('auth2', function() {
+			gapi.auth2.init();
+		});
+	}
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async
+	defer></script>
 </head>
 
 <body>
     <!--  wrapper -->
     <div id="wrapper">
         <!-- navbar top -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
-            <!-- navbar-header -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">
-            
-                <img src="assets/img/logo.png" alt="" />
-                </a>
-            </div>
-            <!-- end navbar-header -->
-            <!-- navbar-top-links -->
-            <ul class="nav navbar-top-links navbar-right">                          
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-3x"></i>
-                    </a>
-                    <!-- dropdown user-->
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
-                        </li>
-                    </ul>
-                    <!-- end dropdown-user -->
-                </li>
-                <!-- end main dropdown -->
-            </ul>
-            <!-- end navbar-top-links -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation"
+			id="navbar">
+			<!-- navbar-header -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"> <img
+					src="assets/img/logo.png" alt="" />
+				</a>
+			</div>
+			<ul class="nav navbar-top-links navbar-right">
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-3x"></i>
+				</a> <!-- dropdown user-->
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a></li>
+						<li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
+						<li class="divider"></li>
+						<li><a href="login.jsp" onclick="signOut();"><i class="fa fa-sign-out fa-fw"></i>Sign off</a>
+						
+						</li>
+					</ul> <!-- end dropdown-user --></li>
+				<!-- end main dropdown -->
+			</ul>
+			<!-- end navbar-top-links -->
 
-        </nav>
-        <!-- end navbar top -->
+		</nav>
+		<!-- end navbar top -->
 
-        <!-- navbar side -->
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <!-- sidebar-collapse -->
-            <div class="sidebar-collapse">
-                <!-- side-menu -->
-                <ul class="nav" id="side-menu">
-                    <li>
-                        <!-- user image section-->
-                        <div class="user-section">
-                            <div class="user-section-inner">
-                                <img src="assets/img/user.jpg" alt="">
-                            </div>
-                            <div class="user-info">
-                                <div>Witthaya <strong>Sam</strong></div>
-                                <div class="user-text-online">
-                                    <span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
-                                </div>
-                            </div>
-                        </div>
-                        <!--end user image section-->
-                    </li>
-                    <li class="sidebar-search">
-                        <!-- search section-->
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                        <!--end search section-->
-                    </li>                                  
-                     <li>
-                        <a href="timeline.html" class="selected"><i class="fa fa-flask fa-fw"></i>Timeline</a>
-                    </li>                  
-                    <li>
-                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Forms</a>
-                    </li>                                       
-                    <li class="active">
-                       <a href="login.html"><i class="fa fa-files-o fa-fw"></i>Login Page</a>                       
-                        <!-- second-level-items -->
-                    </li>
-                </ul>
-                <!-- end side-menu -->
-            </div>
-            <!-- end sidebar-collapse -->
-        </nav>
-        <!-- end navbar side -->
+		<!-- navbar side -->
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<!-- sidebar-collapse -->
+			<div class="sidebar-collapse">
+				<!-- side-menu -->
+				<ul class="nav" id="side-menu">
+					<li>
+						<!-- user image section-->
+						<div class="user-section">
+							<div class="user-section-inner">
+								<img src="assets/img/user.jpg" alt="">
+							</div>
+							<div class="user-info">
+								<div>
+									Admin <strong></strong>
+								</div>
+								<div class="user-text-online">
+									<span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
+								</div>
+							</div>
+						</div> <!--end user image section-->
+					</li>
+					<li class="sidebar-search">
+						<!-- search section-->
+						<div class="input-group custom-search-form">
+							<input type="text" class="form-control" placeholder="Search...">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div> <!--end search section-->
+					</li>
+					<li><a href="timeline.jsp"><i class="fa fa-flask fa-fw"></i>Timeline</a>
+					</li>
+					<li class="selected"><a href="forms.html"><i
+							class="fa fa-edit fa-fw"></i>Forms</a></li>
+					<li><a href="listInformation.jsp"><i class="fa fa-files-o fa-fw"></i> List News</a>
+					 <!-- second-level-items --></li>
+				</ul>
+				<!-- end side-menu -->
+			</div>
+			<!-- end sidebar-collapse -->
+		</nav>
+		<!-- end navbar side -->
+		
+
+		<!-- navbar side -->
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<!-- sidebar-collapse -->
+			<div class="sidebar-collapse">
+				<!-- side-menu -->
+				<ul class="nav" id="side-menu">
+					<li>
+						<!-- user image section-->
+						<div class="user-section">
+							<div class="user-section-inner">
+								<img src="assets/img/user.jpg" alt="">
+							</div>
+							<div class="user-info">
+								<div>
+									Admin <strong></strong>
+								</div>
+								<div class="user-text-online">
+									<span class="user-circle-online btn btn-success btn-circle "></span>&nbsp;Online
+								</div>
+							</div>
+						</div> <!--end user image section-->
+					</li>
+					<li class="sidebar-search">
+						<!-- search section-->
+						<div class="input-group custom-search-form">
+							<input type="text" class="form-control" placeholder="Search...">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div> <!--end search section-->
+					</li>
+					<li  class="selected"><a href="timeline.jsp"><i class="fa fa-flask fa-fw"></i>Timeline</a></li>
+					<li><a href="forms.jsp"><i class="fa fa-edit fa-fw"></i>Forms</a></li>
+					<li><a href="listInformation.jsp"><i class="fa fa-files-o fa-fw"></i> List News</a>
+					 <!-- second-level-items --></li>
+				</ul>
+				<!-- end side-menu -->
+			</div>
+			<!-- end sidebar-collapse -->
+		</nav>
+		<!-- end navbar side -->
+		
         <!--  page-wrapper -->
         <div id="page-wrapper">
 
