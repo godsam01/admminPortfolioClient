@@ -60,26 +60,27 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.6/js/froala_editor.pkgd.min.js"></script>
 	<!--  wrapper -->
 	<script>
-	function onClickSave() {
-		var htmlValue = $('textarea#froala-editor').val();
-		console.log('Save ',htmlValue);
-		$.ajax({
-			url : "saveInformation.do",
-			data : {
-				htmlValue : htmlValue
-			},
-			success : function(result) {
-				console.log('result', result);
-				if (result === 'success') {
-					window.location = "http://localhost:8080/Adminportfolio/listInformation.do";
-					}
-			},
-			error : function(xhr, status, error) {
-				console.log('worng')
-				console.log(error);
-			}
-		});
-	}
+		function onClickSave() {
+			var htmlValue = $('textarea#froala-editor').val();
+			console.log('Save ', htmlValue);
+			$
+					.ajax({
+						url : "saveInformation.do",
+						data : {
+							htmlValue : htmlValue
+						},
+						success : function(result) {
+							console.log('result', result);
+							if (result === 'success') {
+								window.location = "http://localhost:8080/Adminportfolio/listInformation.do";
+							}
+						},
+						error : function(xhr, status, error) {
+							console.log('worng')
+							console.log(error);
+						}
+					});
+		}
 	</script>
 	<div id="wrapper">
 		<!-- navbar top -->
@@ -102,12 +103,12 @@
 					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-3x"></i>
 				</a> <!-- dropdown user-->
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a></li>
+						<li><a href="#"><i class="fa fa-user fa-fw"></i>User
+								Profile</a></li>
 						<li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
 						<li class="divider"></li>
-						<li><a href="login.jsp" onclick="signOut();"><i class="fa fa-sign-out fa-fw"></i>Sign off</a>
-						
-						</li>
+						<li><a href="login.jsp" onclick="signOut();"><i
+								class="fa fa-sign-out fa-fw"></i>Sign off</a></li>
 					</ul> <!-- end dropdown-user --></li>
 				<!-- end main dropdown -->
 			</ul>
@@ -150,16 +151,17 @@
 						</div> <!--end search section-->
 					</li>
 					<li><a href="timeline.jsp"><i class="fa fa-flask fa-fw"></i>Timeline</a></li>
-					<li class="selected"><a href="forms.jsp"><i class="fa fa-edit fa-fw"></i>Forms</a></li>
-					<li><a href="listInformation.do"><i class="fa fa-files-o fa-fw"></i> List News</a>
-					 <!-- second-level-items --></li>
+					<li class="selected"><a href="forms.jsp"><i
+							class="fa fa-edit fa-fw"></i>Forms</a></li>
+					<li><a href="adminListinformation.jsp"><i
+							class="fa fa-files-o fa-fw"></i> List News</a> <!-- second-level-items --></li>
 				</ul>
 				<!-- end side-menu -->
 			</div>
 			<!-- end sidebar-collapse -->
 		</nav>
 		<!-- end navbar side -->
-		
+
 		<!--  page-wrapper -->
 		<div id="page-wrapper">
 			<div class="row">
@@ -173,19 +175,38 @@
 
 			<form>
 				<textarea id="froala-editor">
+			<c:forEach items="${listInformation}" var="listInformation">
+				${listInformation.body}
+			</c:forEach>
+		</textarea>
+				<textarea id="froala-editor">
 		
 				</textarea>
 				<input type="button" value="Next" onclick="onClickSave()">
 			</form>
 			<br />
+			<div id="preview" class="fr-view">
+				<p>
+					<c:forEach items="${listInformation}" var="listInformation">
+					${listInformation.body}
+				</c:forEach>
+				</p>
+
+			</div>
 			<script>
-			$('textarea#froala-editor').froalaEditor({
-				  toolbarInline: true,
-				  charCounterCount: false,
-				  toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '-', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage', 'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo'],
-				  toolbarVisibleWithoutSelection: true
-				})
-			
+				$('textarea#froala-editor').froalaEditor(
+						{
+							toolbarInline : true,
+							charCounterCount : false,
+							toolbarButtons : [ 'bold', 'italic', 'underline',
+									'strikeThrough', 'subscript',
+									'superscript', '-', 'paragraphFormat',
+									'align', 'formatOL', 'formatUL', 'indent',
+									'outdent', '-', 'insertImage',
+									'insertLink', 'insertFile', 'insertVideo',
+									'undo', 'redo' ],
+							toolbarVisibleWithoutSelection : true
+						})
 			</script>
 			<!-- Addinformation -->
 
