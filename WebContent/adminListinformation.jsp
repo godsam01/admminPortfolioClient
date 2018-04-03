@@ -125,18 +125,16 @@
 											<th class="center">Lists information</th>	
 											<th></th>
 											<th></th>
-											<th class="center">Edit</th>
-											<th class="center">Delete</th>																			
+																		
 										</tr>
 									</thead>
 								<c:forEach items="${adminListinformation}" var="adminListinformation">
 									<tbody>									
 										<tr class="even gradeC">
 											<td>${adminListinformation.body}</td>
-											<td></td>
-											<td></td>
-											<td class="center"><button type="button" class="btn btn-warning">Edit</button></td>
-											<td class="center"><button type="button" class="btn btn-danger">Delete</button></td>																				
+										
+											<!-- <td class="center"><button type="button" class="btn btn-warning">Edit</button></td>
+											<td class="center"><button type="button" class="btn btn-danger">Delete</button></td>		 -->																		
 										</tr>									
 									</tbody>
 								</c:forEach>

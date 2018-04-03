@@ -153,7 +153,7 @@
 					<li><a href="timeline.jsp"><i class="fa fa-flask fa-fw"></i>Timeline</a></li>
 					<li class="selected"><a href="forms.jsp"><i
 							class="fa fa-edit fa-fw"></i>Forms</a></li>
-					<li><a href="adminListinformation.jsp"><i
+					<li><a href="adminListinformation.do"><i
 							class="fa fa-files-o fa-fw"></i> List News</a> <!-- second-level-items --></li>
 				</ul>
 				<!-- end side-menu -->
