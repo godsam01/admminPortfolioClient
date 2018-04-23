@@ -133,8 +133,8 @@
 										<tr class="even gradeC">
 											<td>${adminListinformation.body}</td>
 										
-											<!-- <td class="center"><button type="button" class="btn btn-warning">Edit</button></td>
-											<td class="center"><button type="button" class="btn btn-danger">Delete</button></td>		 -->																		
+											 <td class="center"><button type="button" class="btn btn-warning">Edit</button></td>
+										<td class="center"><button type="button" class="btn btn-danger">Delete</button></td>																		
 										</tr>									
 									</tbody>
 								</c:forEach>

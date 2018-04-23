@@ -94,7 +94,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"> <img
+				<a class="navbar-brand" href="form.jsp"> <img
 					src="assets/img/logo.png" alt="" />
 				</a>
 			</div>
@@ -172,14 +172,24 @@
 				<!--end page header -->
 			</div>
 			<!-- Addinformation -->
-
+			<h2>Title</h2>
 			<form>			
 				<textarea id="froala-editor">
 		
 				</textarea>
-				<input type="button" value="Next" onclick="onClickSave()">
+				<br>
+				<input type="button" class="btn btn-warning" value="Next" onclick="onClickSave()">
 			</form>
-			<br />
+			<br>
+			<h2>Body</h2>
+			<form>			
+				<textarea id="froala-editor">
+		
+				</textarea>
+				<br>
+				<input type="button" class="btn btn-warning" value="Next" onclick="onClickSave()">
+			</form>
+			<br>
 			<script>
 				$('textarea#froala-editor').froalaEditor().on(
 						'froalaEditor.contentChanged', function(e, editor) {
